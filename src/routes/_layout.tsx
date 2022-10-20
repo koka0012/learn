@@ -1,21 +1,21 @@
-import { Layout, Stack } from "expo-router";
-import { memo, useEffect, useState } from "react";
+import useCachedResources from "@hooks/useCachedResources";
+import { isLogged } from "@recoil/session";
+import { SplashScreen, Stack } from "expo-router";
+import { memo } from "react";
+import { useRecoilValue } from "recoil";
 
 function RootLayout() {
-  const [auth, setAuth] = useState(false);
+  const logged = useRecoilValue(isLogged);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setAuth(true);
-    }, 5000);
-  }, []);
+  const loadedResources = useCachedResources();
+
+  if (!loadedResources) return <SplashScreen />;
 
   return (
-    <Layout>
-      <Layout.Screen name="(app)/index" redirect={!auth} />
-      <Layout.Screen name="sign-in" redirect={auth} />
-      <Layout.Children />
-    </Layout>
+    <Stack>
+      <Stack.Screen name="(app)/index" redirect={logged} />
+      <Stack.Screen name="(unauthenticated)/login" redirect={!logged} />
+    </Stack>
   );
 }
 

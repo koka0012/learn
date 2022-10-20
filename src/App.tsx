@@ -1,12 +1,20 @@
+import "@i18n";
+import "react-native-url-polyfill/auto";
+
+import { Providers } from "@components/organisms";
 import { registerRootComponent } from "expo";
 import { ExpoRoot, SplashScreen } from "expo-router";
-import { View, Platform } from "react-native";
+import { Platform } from "react-native";
 
 // Must be exported or Fast Refresh won't update the context >:[
 export function App() {
   const ctx = require.context("./routes");
 
-  return <ExpoRoot context={ctx} />;
+  return (
+    <Providers>
+      <ExpoRoot context={ctx} />
+    </Providers>
+  );
 }
 
 function isBaseObject(obj: unknown) {
