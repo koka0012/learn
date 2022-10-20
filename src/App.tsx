@@ -1,6 +1,9 @@
+import "@i18n";
+import "react-native-url-polyfill/auto";
+
 import { registerRootComponent } from "expo";
 import { ExpoRoot, SplashScreen } from "expo-router";
-import { View, Platform } from "react-native";
+import { Platform } from "react-native";
 
 // Must be exported or Fast Refresh won't update the context >:[
 export function App() {

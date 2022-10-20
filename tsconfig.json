@@ -1,6 +1,19 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms/*": ["./src/components/organisms/*"],
+      "@libs/*": ["./src/libs/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@recoil/*": ["./src/recoil/*"],
+      "@i18n": ["./src/libs/i18n"]
+    }
   }
 }

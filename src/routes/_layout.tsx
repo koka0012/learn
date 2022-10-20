@@ -1,22 +1,23 @@
-import { Layout, Stack } from "expo-router";
-import { memo, useEffect, useState } from "react";
+// import { withProviders } from "@components/organisms/Providers";
+import useCachedResources from "@hooks/useCachedResources";
+import { SplashScreen, Stack } from "expo-router";
+import { memo, Suspense } from "react";
 
 function RootLayout() {
-  const [auth, setAuth] = useState(false);
+  // const logged = useRecoilValue(isLogged);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setAuth(true);
-    }, 5000);
-  }, []);
+  const loadedResources = useCachedResources();
+
+  if (!loadedResources) return <SplashScreen />;
 
   return (
-    <Layout>
-      <Layout.Screen name="(app)/index" redirect={!auth} />
-      <Layout.Screen name="sign-in" redirect={auth} />
-      <Layout.Children />
-    </Layout>
+    <Suspense fallback={<SplashScreen />}>
+      <Stack>
+        <Stack.Screen name="(app)/index" redirect={true} />
+        <Stack.Screen name="(unauthenticated)/login" redirect={false} />
+      </Stack>
+    </Suspense>
   );
 }
 
-export default memo(RootLayout);
+export default memo(withProviders(RootLayout));
