@@ -9,7 +9,11 @@ import { Platform } from "react-native";
 export function App() {
   const ctx = require.context("./routes");
 
-  return <ExpoRoot context={ctx} />;
+  return (
+    <Providers>
+      <ExpoRoot context={ctx} />
+    </Providers>
+  );
 }
 
 function isBaseObject(obj: unknown) {
