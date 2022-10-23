@@ -1,10 +1,11 @@
+const nativewind = require("nativewind/babel");
+
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ["babel-preset-expo"],
+    presets: ["babel-preset-expo", "nativewind/babel"],
     plugins: [
       "transform-inline-environment-variables",
-      "nativewind/babel",
       require.resolve("expo-router/babel"),
       [
         "module-resolver",

@@ -32,7 +32,7 @@
     "expo-system-ui": "~1.3.0",
     "expo-web-browser": "~11.0.0",
     "i18next": "^22.0.1",
-    "nativewind": "^2.0.11",
+    "nativewind": "3.0.0-next.1-158-gbd36992",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-i18next": "^11.18.6",
@@ -46,7 +46,8 @@
     "recoil": "^0.7.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "7.19.3",
+    "@expo/webpack-config": "^0.17.0",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
     "@types/webpack-env": "^1.18.0",

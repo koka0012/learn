@@ -1,4 +1,4 @@
-// import { withProviders } from "@components/organisms/Providers";
+import { withProviders } from "@components/organisms/Providers";
 import useCachedResources from "@hooks/useCachedResources";
 import { SplashScreen, Stack } from "expo-router";
 import { memo, Suspense } from "react";
